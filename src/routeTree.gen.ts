@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BenchmarkRouteImport } from './routes/benchmark'
+import { Route as ComentariosRouteImport } from './routes/comentarios'
+import { Route as FortalezasOportunidadesRouteImport } from './routes/fortalezas-oportunidades'
+import { Route as MapaDeCalorRouteImport } from './routes/mapa-de-calor'
+import { Route as PreguntasCriticasRouteImport } from './routes/preguntas-criticas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BenchmarkRoute = BenchmarkRouteImport.update({
+  id: '/benchmark',
+  path: '/benchmark',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComentariosRoute = ComentariosRouteImport.update({
+  id: '/comentarios',
+  path: '/comentarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FortalezasOportunidadesRoute = FortalezasOportunidadesRouteImport.update({
+  id: '/fortalezas-oportunidades',
+  path: '/fortalezas-oportunidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapaDeCalorRoute = MapaDeCalorRouteImport.update({
+  id: '/mapa-de-calor',
+  path: '/mapa-de-calor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreguntasCriticasRoute = PreguntasCriticasRouteImport.update({
+  id: '/preguntas-criticas',
+  path: '/preguntas-criticas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/benchmark': typeof BenchmarkRoute
+  '/comentarios': typeof ComentariosRoute
+  '/fortalezas-oportunidades': typeof FortalezasOportunidadesRoute
+  '/mapa-de-calor': typeof MapaDeCalorRoute
+  '/preguntas-criticas': typeof PreguntasCriticasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/benchmark': typeof BenchmarkRoute
+  '/comentarios': typeof ComentariosRoute
+  '/fortalezas-oportunidades': typeof FortalezasOportunidadesRoute
+  '/mapa-de-calor': typeof MapaDeCalorRoute
+  '/preguntas-criticas': typeof PreguntasCriticasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/benchmark': typeof BenchmarkRoute
+  '/comentarios': typeof ComentariosRoute
+  '/fortalezas-oportunidades': typeof FortalezasOportunidadesRoute
+  '/mapa-de-calor': typeof MapaDeCalorRoute
+  '/preguntas-criticas': typeof PreguntasCriticasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/benchmark'
+    | '/comentarios'
+    | '/fortalezas-oportunidades'
+    | '/mapa-de-calor'
+    | '/preguntas-criticas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/benchmark'
+    | '/comentarios'
+    | '/fortalezas-oportunidades'
+    | '/mapa-de-calor'
+    | '/preguntas-criticas'
+  id:
+    | '__root__'
+    | '/'
+    | '/benchmark'
+    | '/comentarios'
+    | '/fortalezas-oportunidades'
+    | '/mapa-de-calor'
+    | '/preguntas-criticas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BenchmarkRoute: typeof BenchmarkRoute
+  ComentariosRoute: typeof ComentariosRoute
+  FortalezasOportunidadesRoute: typeof FortalezasOportunidadesRoute
+  MapaDeCalorRoute: typeof MapaDeCalorRoute
+  PreguntasCriticasRoute: typeof PreguntasCriticasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/benchmark': {
+      id: '/benchmark'
+      path: '/benchmark'
+      fullPath: '/benchmark'
+      preLoaderRoute: typeof BenchmarkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comentarios': {
+      id: '/comentarios'
+      path: '/comentarios'
+      fullPath: '/comentarios'
+      preLoaderRoute: typeof ComentariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fortalezas-oportunidades': {
+      id: '/fortalezas-oportunidades'
+      path: '/fortalezas-oportunidades'
+      fullPath: '/fortalezas-oportunidades'
+      preLoaderRoute: typeof FortalezasOportunidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mapa-de-calor': {
+      id: '/mapa-de-calor'
+      path: '/mapa-de-calor'
+      fullPath: '/mapa-de-calor'
+      preLoaderRoute: typeof MapaDeCalorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preguntas-criticas': {
+      id: '/preguntas-criticas'
+      path: '/preguntas-criticas'
+      fullPath: '/preguntas-criticas'
+      preLoaderRoute: typeof PreguntasCriticasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BenchmarkRoute: BenchmarkRoute,
+  ComentariosRoute: ComentariosRoute,
+  FortalezasOportunidadesRoute: FortalezasOportunidadesRoute,
+  MapaDeCalorRoute: MapaDeCalorRoute,
+  PreguntasCriticasRoute: PreguntasCriticasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
